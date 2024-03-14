@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Formulir Belanja</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <script>
+            function displaySummary(e) {
+                e.preventDefault();
+                const name = document.querySelector('input[name="name"]').value;
+                const product = document.querySelector('select[name="product"]').value;
+                const address = document.querySelector('textarea[name="address"]').value;
+                const kode = document.querySelector('select[name="kode"]').value;
+                const paymentMethod = document.querySelector('input[name="paymentMethod"]').value;
+                const notes = document.querySelector('textarea[name="notes"]').value;
+                const summary = {
+                    name: name,
+                    product: product,
+                    address: address,
+                    kode: kode,
+                    paymentMethod: paymentMethod,
+                    notes: notes
+                };
+                document.querySelector('p').innerHTML = '';
+                document.querySelector('p').innerHTML += `<br>Nama: ${summary.name}`;
+                document.querySelector('p').innerHTML += `<br>Produk: ${summary.product}`;
+                document.querySelector('p').innerHTML += `<br>Alamat: ${summary.address} ${summary.kode}`;
+                document.querySelector('p').innerHTML += `<br>Metode Pembayaran: ${summary.paymentMethod}`;
+                document.querySelector('p').innerHTML += `<br>Catatan Tambahan: ${summary.notes}`;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="inner">
+                <img src="images/image-1.png" alt="" class="image-1">
+                <form action="">
+                    <h3>Formulir Pembelian Produk</h3>
+                    <hr>
+                    <div class="form-holder">
+                        <span class="lnr lnr-user"></span>
+                        Nama Lengkap <br>
+                        <input type="text" class="form-control" name="name" placeholder="" required>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-holder">
+                        <span class="lnr lnr-envelope"></span>
+                        <label for="barang_dropdown">Pilih Produk:</label> <br>
+                        <select id="barang_dropdown" name="product">
+                            <option value="laptop">Laptop</option>
+                            <option value="Handphone">Handphone</option>
+                            <option value="barang3">Tabloid</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-holder">
+                        <span class="lnr lnr-lock"></span>
+                        Alamat Pengiriman: <br>
+                        <textarea name="address" cols="30" rows="3" minlength="17" maxlength="509" required></textarea>
+                    </div>
+                    <br>
+                    <div class="form-holder">
+                        <span class="lnr lnr-lock"></span>
+                        Kode: <br>
+                        <select id="kode_dropdown" name="kode">
+                            <option value="Jakarta">Jakarta</option>
+                            <option value="Malang">Malang</option>
+                            <option value="Surabaya">Surabaya</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-holder">
+                        <span class="lnr lnr-lock"></span>
+                        Catatan Tambahan: <br>
+                        <textarea name="notes" cols="30" rows="3" minlength="17" maxlength="509" required></textarea>
+                    </div>
+                    <br>
+                    <div class="form-holder">
+                        Pilih Metode Pembayaran: <br>
+                        <input type="text" class="form-control" name="paymentMethod" placeholder="" required>
+                    </div>
+                    <br>
+                    <button type="button" onclick="displaySummary(event)">
+                        <span>Tampilkan Summary</span>
+                    </button>
+                    <hr>
+                    <h2> Summary Pembelian:</h2>
+                    <p id="summary"></p>
+                </form>
+                <img src="images/image-2.png" alt="" class="image-2">
+            </div>
+        </div>
+    </body>
+</html>
